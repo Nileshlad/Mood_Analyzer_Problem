@@ -13,17 +13,21 @@ public class MoodAnalyserProblem {
         this.message = message;
     }
 
-    //METHOD
+    //METHOD AND EXCEPTION
     public String analysisMood()
     {
-        if(message.contains("happy"))
-        {
-            mood = "happy";
-        }else if(message.contains("sad")){
-            mood= "sad";
+        try {
+            if (message.contains("happy")) {
+                return  "happy";
+            } else {
+                return  "sad";
+            }
+            }
+        catch (NullPointerException e) {
+                return "happy";
         }
-        return mood;
     }
+    //MAIN METHOD
     public static void main (String args[]){
         System.out.println("WELCOME MOOD ANALYSER PROBLEM");
 
