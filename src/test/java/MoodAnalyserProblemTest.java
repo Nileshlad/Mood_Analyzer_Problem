@@ -3,21 +3,17 @@ import org.junit.Test;
 
 public class MoodAnalyserProblemTest {
 
-    //OBJECT
-    MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem();
-
-    //TEST CASE 1
     @Test
     public void givenMessage_WhenValid_ThenReturnMood() {
-       String result = moodAnalyser.analysisMood("i am happy mood");
-        Assert.assertEquals("happy",result);
+        MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("i am happy mood");
+        String result = moodAnalyser.analysisMood();
+        Assert.assertEquals("happy", result);
     }
 
-    //TEST CASE 2
     @Test
-    public void givenMessage_WhenInvalid_ThenReturenMood() {
-        String result = moodAnalyser.analysisMood("i am sad mood");
-        Assert.assertEquals("sad",result);
-
+    public void givenMessage_WhenInvalid_ThenReturnMood() {
+        MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("i am sad mood");
+        String result = moodAnalyser.analysisMood();
+        Assert.assertEquals("sad", result);
     }
 }

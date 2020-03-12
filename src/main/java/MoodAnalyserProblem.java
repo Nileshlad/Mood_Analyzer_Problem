@@ -3,13 +3,23 @@ public class MoodAnalyserProblem {
     String message;
     String mood;
 
+    //DEFAULT CONSTRUCTORS
+    public MoodAnalyserProblem() {
+        message="";
+
+    }
+    //PARAMETER CONSTRUCTORS
+    public MoodAnalyserProblem(String message) {
+        this.message = message;
+    }
+
     //METHOD
-    public String analysisMood(String message)
+    public String analysisMood()
     {
-        if(message.equals("i am happy mood"))
+        if(message.contains("happy"))
         {
             mood = "happy";
-        }else if(message.equals("i am sad mood")){
+        }else if(message.contains("sad")){
             mood= "sad";
         }
         return mood;
@@ -18,6 +28,4 @@ public class MoodAnalyserProblem {
         System.out.println("WELCOME MOOD ANALYSER PROBLEM");
 
     }
-
-
 }
