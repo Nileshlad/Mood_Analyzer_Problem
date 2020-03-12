@@ -8,15 +8,19 @@ public class MoodAnalyserProblem {
         message="";
 
     }
-    //PARAMETER CONSTRUCTORS
-    public MoodAnalyserProblem(String message) {
+    //PARAMETERIZED CONSTRUCTORS
+    public MoodAnalyserProblem(String message){
         this.message = message;
     }
 
-    //METHOD AND EXCEPTION
-    public String analysisMood()
+
+    //METHOD AND THROW CUSTOM EXCEPTION
+    public String analysisMood(Object o)throws MoodAnalysisException
     {
         try {
+            if(message.length() == 0){
+                throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.EMPTY,"please proper mood");
+            }
             if (message.contains("happy")) {
                 return  "happy";
             } else {
@@ -24,11 +28,12 @@ public class MoodAnalyserProblem {
             }
             }
         catch (NullPointerException e) {
-                return "happy";
+                //return "happy";
+            throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL,"please enter proper mood");
         }
     }
-    //MAIN METHOD
-    public static void main (String args[]){
+    //MAIN METHOD AND THROW CUSTOM EXCEPTION
+    public static void main (String args[])throws MoodAnalysisException{
         System.out.println("WELCOME MOOD ANALYSER PROBLEM");
 
     }
