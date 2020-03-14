@@ -1,15 +1,20 @@
-public class MoodAnalysisException extends Exception {
+public class MoodAnalysisException extends Exception
+{
     //CLASS
-    enum MoodAnalysisCustomException{
+    enum MoodAnalysisCustomException
+    {
         //VALUE
-        NULL,EMPTY;
+        NULL,EMPTY,NO_SUCH_METHOD;
+
 
     }
     MoodAnalysisCustomException type;
 
     //CONSTRUCTOR
-    public MoodAnalysisException(MoodAnalysisCustomException type,String message) {
+    public MoodAnalysisException(MoodAnalysisCustomException type,String message)
+    {
         super(message);
         this.type = type;
+        System.out.println(message);
     }
 }

@@ -24,6 +24,25 @@ public class MoodAnalyserFactory {
         return null;
     }
 
+    //TO CHECK NO CLASS AND NO METHOD
+    public static Object getConstructor(String ClassName, Class param, String reaction) throws MoodAnalysisException {
 
+        try {
+            Class<?> moodAnalyserClass = Class.forName(ClassName);
+            Constructor<?> moodConstructor = moodAnalyserClass.getConstructor(param);
+            return moodConstructor.newInstance(reaction);
 
+        } catch (ClassNotFoundException e) {
+            throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD,e.getMessage());
+        } catch (NoSuchMethodException e) {
+            throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD,e.getMessage());
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

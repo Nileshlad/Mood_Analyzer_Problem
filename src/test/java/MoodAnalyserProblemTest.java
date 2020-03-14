@@ -1,7 +1,8 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MoodAnalyserProblemTest {
+public class MoodAnalyserProblemTest
+{
 
     //TEST CASE 1.1
     @Test
@@ -32,7 +33,8 @@ public class MoodAnalyserProblemTest {
     public void givenNull_MoodShould_ThrowException() {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem(null);
 
-        try {
+        try
+        {
             moodAnalyser.analysisMood(null);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NULL, e.type);
@@ -44,9 +46,8 @@ public class MoodAnalyserProblemTest {
     public void givenEmpty_MoodShould_ThrowException() {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("");
 
-        try {
-
-            
+        try
+        {
             moodAnalyser.analysisMood("");
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.EMPTY, e.type);
@@ -62,4 +63,14 @@ public class MoodAnalyserProblemTest {
         Assert.assertEquals(true, result);
     }
 
-   }
+    //TEST CASE 4.2
+    @Test
+    public void givenClassName_ThrowMoodAnalyserException() {
+        try
+        {
+            MoodAnalyserFactory.getConstructor("MoodAnalyser", String.class, "i am happy mood");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
+        }
+    }
+}
