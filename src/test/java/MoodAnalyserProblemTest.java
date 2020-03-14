@@ -73,4 +73,15 @@ public class MoodAnalyserProblemTest
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         }
     }
+
+    //TEST CASE 4.3
+    @Test
+    public void givenClassNameConstructor_NotProper_ShouldThrowMoodAnalyserException() {
+        try
+        {
+            MoodAnalyserFactory.getConstructor("DMoodAnalyser", String.class, "i am happy mood");
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
+        }
+    }
 }

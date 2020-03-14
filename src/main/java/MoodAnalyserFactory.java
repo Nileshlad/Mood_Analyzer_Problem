@@ -25,11 +25,11 @@ public class MoodAnalyserFactory {
     }
 
     //TO CHECK NO CLASS AND NO METHOD
-    public static Object getConstructor(String ClassName, Class param, String reaction) throws MoodAnalysisException {
+    public static Object getConstructor(String ClassName, Class argument, String reaction) throws MoodAnalysisException {
 
         try {
             Class<?> moodAnalyserClass = Class.forName(ClassName);
-            Constructor<?> moodConstructor = moodAnalyserClass.getConstructor(param);
+            Constructor<?> moodConstructor = moodAnalyserClass.getConstructor(argument);
             return moodConstructor.newInstance(reaction);
 
         } catch (ClassNotFoundException e) {
