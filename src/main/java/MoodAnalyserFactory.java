@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationTargetException;
 public class MoodAnalyserFactory
 {
 
+    //DEFAULT CONSTRUCTOR
     public static MoodAnalyserProblem CreateMoodAnalyser()
     {
         try
@@ -49,4 +50,25 @@ public class MoodAnalyserFactory
         }
         return null;
     }
+
+    //PARAMETERIZED CONSTRUCTORS
+    public static void CreateMoodAnalyser(String mood)
+    {
+        try
+        {
+        Constructor<?>moodContractor = Class.forName("MoodAnalyser").getConstructor(String.class);
+        Object Instance = moodContractor.newInstance(mood);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
