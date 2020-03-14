@@ -1,10 +1,13 @@
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 
-public class MoodAnalyserFactory {
+public class MoodAnalyserFactory
+{
 
-        public static MoodAnalyserProblem CreateMoodAnalyser() {
-        try {
+    public static MoodAnalyserProblem CreateMoodAnalyser()
+    {
+        try
+        {
             Class<?> moodAnalyser = Class.forName("MoodAnalyser");
             Constructor<?> moodConstructor = moodAnalyser.getConstructor();
             Object Instance = moodConstructor.newInstance();
@@ -25,9 +28,10 @@ public class MoodAnalyserFactory {
     }
 
     //TO CHECK NO CLASS AND NO METHOD
-    public static Object getConstructor(String ClassName, Class argument, String reaction) throws MoodAnalysisException {
-
-        try {
+    public static Object getConstructor(String ClassName, Class argument, String reaction) throws MoodAnalysisException
+    {
+        try
+        {
             Class<?> moodAnalyserClass = Class.forName(ClassName);
             Constructor<?> moodConstructor = moodAnalyserClass.getConstructor(argument);
             return moodConstructor.newInstance(reaction);

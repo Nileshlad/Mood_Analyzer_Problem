@@ -6,7 +6,8 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 1.1
     @Test
-    public void givenMessage_WhenValid_ThenReturnMood() throws MoodAnalysisException {
+    public void givenMessage_WhenValid_ThenReturnMood() throws MoodAnalysisException
+    {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("i am happy mood");
         String result = moodAnalyser.analysisMood(null);
         Assert.assertEquals("happy", result);
@@ -14,7 +15,8 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 1.2
     @Test
-    public void givenMessage_WhenInvalid_ThenReturnMood() throws MoodAnalysisException {
+    public void givenMessage_WhenInvalid_ThenReturnMood() throws MoodAnalysisException
+    {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("i am sad mood");
         String result = moodAnalyser.analysisMood(null);
         Assert.assertEquals("sad", result);
@@ -22,7 +24,8 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 2.1
     @Test
-    public void givenMessage_WhenInvalid_ThenReturnThrowException() throws MoodAnalysisException {
+    public void givenMessage_WhenInvalid_ThenReturnThrowException() throws MoodAnalysisException
+    {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem(null);
         String result = moodAnalyser.analysisMood(null);
         Assert.assertEquals("happy", result);
@@ -30,9 +33,9 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 3.1
     @Test
-    public void givenNull_MoodShould_ThrowException() {
+    public void givenNull_MoodShould_ThrowException()
+    {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem(null);
-
         try
         {
             moodAnalyser.analysisMood(null);
@@ -43,9 +46,9 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 3.2
     @Test
-    public void givenEmpty_MoodShould_ThrowException() {
+    public void givenEmpty_MoodShould_ThrowException()
+    {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("");
-
         try
         {
             moodAnalyser.analysisMood("");
@@ -56,7 +59,8 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 4.1
     @Test
-    public void givenMoodAnalyser_DefeatConstructors_ReturnObject() {
+    public void givenMoodAnalyser_DefeatConstructors_ReturnObject()
+    {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem();
         MoodAnalyserProblem moodAnalyserProblem = new MoodAnalyserProblem();
         boolean result = moodAnalyserProblem.equals(moodAnalyser);
@@ -65,7 +69,8 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 4.2
     @Test
-    public void givenClassName_ThrowMoodAnalyserException() {
+    public void givenClassName_ThrowMoodAnalyserException()
+    {
         try
         {
             MoodAnalyserFactory.getConstructor("MoodAnalyser", String.class, "i am happy mood");
@@ -76,10 +81,11 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 4.3
     @Test
-    public void givenClassNameConstructor_NotProper_ShouldThrowMoodAnalyserException() {
+    public void givenClassNameConstructor_NotProper_ShouldThrowMoodAnalyserException()
+    {
         try
         {
-            MoodAnalyserFactory.getConstructor("DMoodAnalyser", String.class, "i am happy mood");
+            MoodAnalyserFactory.getConstructor("oodMoodAnalyser", String.class, "i am happy mood");
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         }
