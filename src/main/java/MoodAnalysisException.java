@@ -3,6 +3,7 @@ public class MoodAnalysisException extends Exception {
     enum MoodAnalysisCustomException{
         //VALUE
         NULL,EMPTY;
+
     }
     MoodAnalysisCustomException type;
 

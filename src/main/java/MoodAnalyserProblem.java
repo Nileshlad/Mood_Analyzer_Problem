@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MoodAnalyserProblem {
     //VARIABLE
     String message;
@@ -28,10 +30,20 @@ public class MoodAnalyserProblem {
             }
             }
         catch (NullPointerException e) {
-                //return "happy";
             throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL,"please enter proper mood");
         }
     }
+
+    //OVERRIDE EQUALS METHOD
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MoodAnalyserProblem)) return false;
+        MoodAnalyserProblem that = (MoodAnalyserProblem) o;
+        return Objects.equals(message, that.message) &&
+                Objects.equals(mood, that.mood);
+    }
+
     //MAIN METHOD AND THROW CUSTOM EXCEPTION
     public static void main (String args[])throws MoodAnalysisException{
         System.out.println("WELCOME MOOD ANALYSER PROBLEM");

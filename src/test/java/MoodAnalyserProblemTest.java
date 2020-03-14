@@ -26,18 +26,16 @@ public class MoodAnalyserProblemTest {
         String result = moodAnalyser.analysisMood(null);
         Assert.assertEquals("happy", result);
     }
-    
+
     //TEST CASE 3.1
     @Test
     public void givenNull_MoodShould_ThrowException() {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem(null);
 
-        try
-        {
+        try {
             moodAnalyser.analysisMood(null);
-        }catch (MoodAnalysisException e)
-        {
-            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NULL,e.type);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NULL, e.type);
         }
     }
 
@@ -46,13 +44,22 @@ public class MoodAnalyserProblemTest {
     public void givenEmpty_MoodShould_ThrowException() {
         MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem("");
 
-        try
-        {
+        try {
+
+            
             moodAnalyser.analysisMood("");
-        }catch (MoodAnalysisException e)
-        {
-            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.EMPTY,e.type);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.EMPTY, e.type);
         }
     }
 
-}
+    //TEST CASE 4.1
+    @Test
+    public void givenMoodAnalyser_DefeatConstructors_ReturnObject() {
+        MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem();
+        MoodAnalyserProblem moodAnalyserProblem = new MoodAnalyserProblem();
+        boolean result = moodAnalyserProblem.equals(moodAnalyser);
+        Assert.assertEquals(true, result);
+    }
+
+   }
