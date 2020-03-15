@@ -4,7 +4,7 @@ public class MoodAnalysisException extends Exception
     enum MoodAnalysisCustomException
     {
         //VALUE
-        NULL,EMPTY,NO_SUCH_METHOD;
+        NULL,EMPTY,NO_SUCH_CLASS_FOUND,NO_SUCH_METHOD;
     }
     MoodAnalysisCustomException type;
 
