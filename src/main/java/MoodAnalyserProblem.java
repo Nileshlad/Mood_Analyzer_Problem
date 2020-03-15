@@ -38,13 +38,11 @@ public class MoodAnalyserProblem {
 
     //OVERRIDE EQUALS METHOD
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (!(o instanceof MoodAnalyserProblem)) return false;
-        MoodAnalyserProblem that = (MoodAnalyserProblem) o;
-        return Objects.equals(message, that.message) &&
-        Objects.equals(mood, that.mood);
+    public boolean equals(Object secondObject) {
+        if (this == secondObject) return true;
+        if (secondObject == null || getClass() != secondObject.getClass()) return false;
+        MoodAnalyserProblem that = (MoodAnalyserProblem) secondObject;
+        return Objects.equals(message, that.message);
     }
 
     //MAIN METHOD AND THROW CUSTOM EXCEPTION
