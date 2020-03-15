@@ -1,7 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MoodAnalyserProblemTest
+public class MoodAnalyserProblemTest<exception extends Throwable>
 {
 
     //TEST CASE 1.1
@@ -59,21 +59,22 @@ public class MoodAnalyserProblemTest
 
     //TEST CASE 4.1
     @Test
-    public void givenMoodAnalyser_DefeatConstructors_ReturnObject()
-    {
-        MoodAnalyserProblem moodAnalyser = new MoodAnalyserProblem();
-        MoodAnalyserProblem moodAnalyserProblem = new MoodAnalyserProblem();
-        boolean result = moodAnalyserProblem.equals(moodAnalyser);
-        Assert.assertEquals(true, result);
-    }
-
-    //TEST CASE 4.2
-    @Test
-    public void givenClassName_ThrowMoodAnalyserException()
-    {
+    public void givenMoodAnalyserClassNameDefaultConstructor_WhenProper_ShouldReturnObject()  {
         try
         {
-            MoodAnalyserFactory.getConstructor("MoodAnalyser", String.class, "i am happy mood");
+            MoodAnalyserProblem mood = new MoodAnalyserProblem();
+            MoodAnalyserProblem analyseMood = MoodAnalyserFactory.createMoodAnalyser();
+            boolean resultMood = analyseMood.equals(mood);
+            Assert.assertEquals(true, resultMood);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    //TEST CASE 4.2
+    @Test
+    public void givenMoodAnalyserClassName_WhenImproper_ShouldThrowMoodAnalysisException() {
+        try {
+            MoodAnalyserFactory.getConstructor("oodAnalyzer",String.class);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         }
@@ -85,9 +86,23 @@ public class MoodAnalyserProblemTest
     {
         try
         {
-            MoodAnalyserFactory.getConstructor("oodMoodAnalyser", String.class, "i am happy mood");
+            MoodAnalyserFactory.getConstructor("oodMoodAnalyser", String.class);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
+        }
+    }
+
+    //TEST CASE 5.1
+    @Test
+    public void givenMoodAnalyserClassNameParameterizedConstructor_WhenProper_ShouldReturnObject()  {
+        try
+        {
+            MoodAnalyserProblem mood = new MoodAnalyserProblem("happy");
+            MoodAnalyserProblem analyseMood = MoodAnalyserFactory.createMoodAnalyser("happy");
+            boolean resultMood = analyseMood.equals(mood);
+            Assert.assertEquals(true, resultMood);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
