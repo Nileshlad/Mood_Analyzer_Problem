@@ -52,6 +52,4 @@ public class MoodAnalyserFactory
         }
         return null;
     }
-
-
 }

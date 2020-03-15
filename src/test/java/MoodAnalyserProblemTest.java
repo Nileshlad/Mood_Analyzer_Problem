@@ -105,14 +105,15 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
             e.printStackTrace();
         }
     }
+
     //TEST CASE 5.2
     @Test
     public void givenMoodAnalyserClassNameWithParameter_WhenImproper_ShouldThrowMoodAnalysisException() {
-        try {
+        try
+        {
             MoodAnalyserFactory.getConstructor("oodAnalyzer",String.class);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         }
     }
-
 }

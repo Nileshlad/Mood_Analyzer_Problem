@@ -29,7 +29,7 @@ public class MoodAnalyserProblem {
             } else {
                 return  "sad";
             }
-            }
+        }
         catch (NullPointerException e)
         {
             throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL,"please enter proper mood");
