@@ -116,4 +116,14 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         }
     }
+
+    //TEST CASE 5.3
+    @Test
+    public void givenMoodAnalyserClassWithParameter_WhenConstructorImproper_ShouldThrowMoodAnalysisException() {
+        try {
+            MoodAnalyserFactory.getConstructor("MoodAnalyzer",Integer.class );
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
+        }
+    }
 }
