@@ -163,13 +163,38 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
     //TEST CASE 7.1
     @Test
     public void setMessageUsingReflector_WhenProper_ShouldReturnMood() {
-        try {
+        try
+        {
             MoodAnalyserProblem moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
             MoodAnalyserFactory.setFieldMoodAnalyser(moodAnalyser,"message","I am in happy mood");
             String moodResult = MoodAnalyserFactory.invokeMoodAnalyser( moodAnalyser, "moodAnalyzer");
             Assert.assertEquals("Happy",moodResult);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    //TEST CASE 7.2
+    @Test
+    public void setMessageField_WhenImproper_ShouldThrowMoodAnalysisException() {
+        try {
+            MoodAnalyserProblem moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
+            MoodAnalyserFactory.setFieldMoodAnalyser(moodAnalyser,"messge","I am in happy mood");
+            String moodResult = MoodAnalyserFactory.invokeMoodAnalyser( moodAnalyser, "moodAnalyzer");
+            Assert.assertEquals("Happy",moodResult);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_FIELD, e.type);
+        }
+    }
+
+    //TEST CASE 7.3
+    @Test
+    public void setNullMessageField_WhenImproper_ShouldThrowMoodAnalysisException() {
+        try {
+            MoodAnalyserProblem moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
+            MoodAnalyserFactory.setFieldMoodAnalyser(moodAnalyser,"message",null);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NULL_VALUE, e.type);
         }
     }
 }

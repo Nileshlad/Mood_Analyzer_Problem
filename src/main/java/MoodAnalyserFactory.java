@@ -65,11 +65,17 @@ public class MoodAnalyserFactory
     }
 
     //SET METHOD THAT SET MOOD
-    public static String setFieldMoodAnalyser(MoodAnalyserProblem mood,String fieldName,String fieldValue) {
+    public static String setFieldMoodAnalyser(MoodAnalyserProblem mood,String fieldName,String fieldValue) throws MoodAnalysisException {
         try {
+            if (fieldValue == null)
+                throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL_VALUE, "Field value is Null");
             Field field = mood.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
             field.set(mood,fieldValue);
+        }catch (NoSuchFieldException e) {
+            throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_FIELD, "No such field found");
+        }catch (MoodAnalysisException e) {
+            throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL_VALUE, "No such field found");
         } catch (Exception e) {
             e.printStackTrace();
         }
