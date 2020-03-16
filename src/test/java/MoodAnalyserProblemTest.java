@@ -177,7 +177,8 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
     //TEST CASE 7.2
     @Test
     public void setMessageField_WhenImproper_ShouldThrowMoodAnalysisException() {
-        try {
+        try
+        {
             MoodAnalyserProblem moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
             MoodAnalyserFactory.setFieldMoodAnalyser(moodAnalyser,"messge","I am in happy mood");
             String moodResult = MoodAnalyserFactory.invokeMoodAnalyser( moodAnalyser, "moodAnalyzer");
@@ -190,7 +191,8 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
     //TEST CASE 7.3
     @Test
     public void setNullMessageField_WhenImproper_ShouldThrowMoodAnalysisException() {
-        try {
+        try
+        {
             MoodAnalyserProblem moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
             MoodAnalyserFactory.setFieldMoodAnalyser(moodAnalyser,"message",null);
         } catch (MoodAnalysisException e) {

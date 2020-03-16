@@ -6,7 +6,8 @@ public class MoodAnalyserFactory
 {
     //DEFAULT CONSTRUCTOR
     public static MoodAnalyserProblem createMoodAnalyser() {
-        try {
+        try
+        {
             Constructor<?> moodConstructor = Class.forName("MoodAnalyzer").getConstructor();
             //CONSTRUCTOR CLASS IS USED TO CREATE A NEW INSTANCE OF CLASS
             Object instance = moodConstructor.newInstance();
@@ -43,7 +44,8 @@ public class MoodAnalyserFactory
 
     //PARAMETERIZED CONSTRUCTOR
     public static MoodAnalyserProblem createMoodAnalyser(String i_am_in_happy_mood) {
-        try {
+        try
+        {
             Constructor<?> moodConstructor = Class.forName("MoodAnalyzer").getConstructor(String.class);
             //CONSTRUCTOR CLASS IS USED TO CREATE A NEW INSTANCE OF CLASS
             Object instance = moodConstructor.newInstance(i_am_in_happy_mood);
@@ -64,9 +66,10 @@ public class MoodAnalyserFactory
         return null;
     }
 
-    //SET METHOD THAT SET MOOD
+    //TO SET METHOD THAT SET MOOD
     public static String setFieldMoodAnalyser(MoodAnalyserProblem mood,String fieldName,String fieldValue) throws MoodAnalysisException {
-        try {
+        try
+        {
             if (fieldValue == null)
                 throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL_VALUE, "Field value is Null");
             Field field = mood.getClass().getDeclaredField(fieldName);
