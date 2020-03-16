@@ -134,7 +134,7 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
     public void givenMessageUsingReflection_WhenProper_ShouldReturnMood() {
         try
         {
-            Constructor constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
+            Constructor<?> constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
             Object instance  = constructor.newInstance("I am in happy mood");
             String analyser = MoodAnalyserFactory.invokeMoodAnalyser((MoodAnalyserProblem) instance, "moodAnalyzer");
             Assert.assertEquals("Happy",analyser);
@@ -149,12 +149,25 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
 
         try
         {
-            Constructor constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
+            Constructor<?>constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
             Object instance = constructor.newInstance("I am in happy mood");
             String analyser = MoodAnalyserFactory.invokeMoodAnalyser((MoodAnalyserProblem) instance, "wrongMoodAnalyzer");
             Assert.assertEquals("Happy",analyser);
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    //TEST CASE 7.1
+    @Test
+    public void setMessageUsingReflector_WhenProper_ShouldReturnMood() {
+        try {
+            MoodAnalyserProblem moodAnalyser = MoodAnalyserFactory.createMoodAnalyser();
+            MoodAnalyserFactory.setFieldMoodAnalyser(moodAnalyser,"message","I am in happy mood");
+            String moodResult = MoodAnalyserFactory.invokeMoodAnalyser( moodAnalyser, "moodAnalyzer");
+            Assert.assertEquals("Happy",moodResult);
         } catch (Exception e) {
             e.printStackTrace();
         }

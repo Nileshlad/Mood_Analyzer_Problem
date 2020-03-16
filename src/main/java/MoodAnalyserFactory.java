@@ -1,4 +1,5 @@
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
 public class MoodAnalyserFactory
@@ -57,6 +58,18 @@ public class MoodAnalyserFactory
     public static String invokeMoodAnalyser(MoodAnalyserProblem mood,String methodName) throws MoodAnalysisException {
         try {
             return (String) mood.getClass().getMethod(methodName).invoke(mood);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    //SET METHOD THAT SET MOOD
+    public static String setFieldMoodAnalyser(MoodAnalyserProblem mood,String fieldName,String fieldValue) {
+        try {
+            Field field = mood.getClass().getDeclaredField(fieldName);
+            field.setAccessible(true);
+            field.set(mood,fieldValue);
         } catch (Exception e) {
             e.printStackTrace();
         }
