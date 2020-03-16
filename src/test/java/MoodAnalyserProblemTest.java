@@ -1,5 +1,7 @@
 import org.junit.Assert;
 import org.junit.Test;
+import java.util.logging.Handler;
+import java.lang.reflect.Constructor;
 
 public class MoodAnalyserProblemTest<exception extends Throwable>
 {
@@ -124,6 +126,20 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
             MoodAnalyserFactory.getConstructor("MoodAnalyzer",Integer.class );
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
+        }
+    }
+
+    @Test
+    public void givenMessageUsingReflection_WhenProper_ShouldReturnMood() {
+
+        try {
+            Constructor constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
+           // Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyzer", String.class);
+            Object instance  = constructor.newInstance("I am in happy mood");
+            String analyser = MoodAnalyserFactory.invokeMoodAnalyser((MoodAnalyserProblem) instance, "moodAnalyzer");
+            Assert.assertEquals("Happy",analyser);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

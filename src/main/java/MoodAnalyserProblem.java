@@ -23,17 +23,19 @@ public class MoodAnalyserProblem {
             {
                 throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.EMPTY,"please proper mood");
             }
-            if (message.contains("happy"))
+            if (message.contains("sad"))
             {
-                return  "happy";
-            } else {
                 return  "sad";
+            } else if (message.contains("happy"))
+            {
+                return  null;
             }
         }
         catch (NullPointerException e)
         {
             throw new MoodAnalysisException(MoodAnalysisException.MoodAnalysisCustomException.NULL,"please enter proper mood");
         }
+        return null;
     }
 
     //OVERRIDE EQUALS METHOD

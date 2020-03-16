@@ -52,4 +52,14 @@ public class MoodAnalyserFactory
         }
         return null;
     }
+
+    //INVOKE METHOD AND RETURN OUTPUT
+    public static String invokeMoodAnalyser(MoodAnalyserProblem mood,String methodName) throws MoodAnalysisException {
+        try {
+            return (String) mood.getClass().getMethod(methodName).invoke(mood);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
