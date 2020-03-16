@@ -122,22 +122,39 @@ public class MoodAnalyserProblemTest<exception extends Throwable>
     //TEST CASE 5.3
     @Test
     public void givenMoodAnalyserClassWithParameter_WhenConstructorImproper_ShouldThrowMoodAnalysisException() {
-        try {
+        try
+        {
             MoodAnalyserFactory.getConstructor("MoodAnalyzer",Integer.class );
         } catch (MoodAnalysisException e) {
             Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         }
     }
-
+    //TEST CASE 6.1
     @Test
     public void givenMessageUsingReflection_WhenProper_ShouldReturnMood() {
-
-        try {
+        try
+        {
             Constructor constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
-           // Constructor constructor = MoodAnalyserFactory.getConstructor("MoodAnalyzer", String.class);
             Object instance  = constructor.newInstance("I am in happy mood");
             String analyser = MoodAnalyserFactory.invokeMoodAnalyser((MoodAnalyserProblem) instance, "moodAnalyzer");
             Assert.assertEquals("Happy",analyser);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    //TEST CASE 6.2
+    @Test
+    public void givenMessageUsingReflection_WhenMethodImproper_ShouldThrowMoodAnalysisException() {
+
+        try
+        {
+            Constructor constructor = (Constructor) MoodAnalyserFactory.getConstructor("MoodAnalzerProblem",String.class);
+            Object instance = constructor.newInstance("I am in happy mood");
+            String analyser = MoodAnalyserFactory.invokeMoodAnalyser((MoodAnalyserProblem) instance, "wrongMoodAnalyzer");
+            Assert.assertEquals("Happy",analyser);
+        } catch (MoodAnalysisException e) {
+            Assert.assertEquals(MoodAnalysisException.MoodAnalysisCustomException.NO_SUCH_METHOD, e.type);
         } catch (Exception e) {
             e.printStackTrace();
         }

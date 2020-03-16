@@ -5,6 +5,7 @@ public class MoodAnalysisException extends Exception
     {
         //VALUE
         NULL,EMPTY,NO_SUCH_CLASS_FOUND,NO_SUCH_METHOD;
+
     }
     MoodAnalysisCustomException type;
 
